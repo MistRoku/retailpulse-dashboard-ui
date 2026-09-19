@@ -10,12 +10,14 @@ module.exports = {
             fontFamily: {
                 sans: ['"Public Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
             },
-            
+
             // NEW COLOR PALETTE: Organic & Editorial
             colors: {
                 // Core Surfaces
                 surface: '#FFFFFF',      // Strict White Background
-                
+                paper: '#FDFBF7',        // NEW: Page Background (Warm Off-White)// Strict White Background
+
+
                 // Typography & Borders (The "Ink")
                 ink: {
                     DEFAULT: '#2C3E30',  // Deep Forest Charcoal (Headings, Primary Text)
@@ -28,7 +30,7 @@ module.exports = {
                 sand: '#F3E9D7',         // Secondary Buttons, Hover States, Table Headers
                 gold: '#EAE2B7',         // Warnings, Low Stock Highlights
                 clay: '#C47A65',         // Destructive Actions, Errors, Out-of-Stock
-                
+
                 // Utility Shades (for subtle backgrounds)
                 'sage-light': '#F0FFF4', // Very light green tint for success badges
                 'sand-dark': '#E8DDCB',  // Slightly darker sand for pressed states

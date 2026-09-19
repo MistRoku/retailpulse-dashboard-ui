@@ -10,13 +10,15 @@
 @layer base {
     html {
         font-family: theme('fontFamily.sans');
-        background-color: #FFFFFF;
-        color: #111111;
+        /* NEW CONSTRAINT: Warm Editorial Background */
+        background-color: #FDFBF7;
+        color: #2C3E30; /* Ink color remains consistent */
     }
 
     body {
-        background-color: #FFFFFF;
-        color: #111111;
+        /* Ensure the body fills the screen with the new bg */
+        background-color: #FDFBF7;
+        min-height: 100vh;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -26,30 +28,32 @@
     }
 
     *:focus-visible {
-        outline: 2px solid #111111;
+        outline: 2px solid #2C3E30;
         outline-offset: 2px;
         box-shadow: none;
     }
 
     ::selection {
-        background-color: #111111;
-        color: #FFFFFF;
+        background-color: #2C3E30;
+        color: #FDFBF7; /* Text selection inverted for readability on dark ink */
     }
 }
 
 @layer components {
-
+    
     /* --- PANELS & CONTAINERS --- */
+    /* These should be WHITE to pop against the PAPER background */
     .rp-panel {
-        @apply border border-ink-faint bg-surface;
+        @apply border border-ink-faint bg-surface; /* Explicitly White */
     }
 
     .rp-card {
-        @apply border border-ink-faint bg-surface p-5;
+        @apply border border-ink-faint bg-surface p-5; /* Explicitly White */
     }
 
     /* --- FORM ELEMENTS --- */
     .rp-field {
+        /* Inputs should be WHITE for clarity, even on paper bg */
         @apply w-full border border-ink-faint bg-surface px-3 py-2 text-sm text-ink placeholder-ink-faint focus:border-ink focus:outline-none rounded-none shadow-none;
     }
 
@@ -58,28 +62,26 @@
     }
 
     /* --- BUTTONS --- */
-
-    /* Base Button Style */
     .rp-button {
         @apply inline-flex cursor-pointer items-center justify-center border px-4 py-2 text-sm font-medium transition-none rounded-none shadow-none;
     }
 
-    /* Primary Action: High Contrast (Dark Ink Border/Text on White or Sand BG) */
+    /* Primary: White button on Paper bg looks clean */
     .rp-button-primary {
         @apply border-ink bg-surface text-ink hover:bg-sand active:bg-sand-dark;
     }
 
-    /* Secondary/Quiet Action: Lower Contrast */
+    /* Quiet: Transparent-ish or Light Sand? Let's keep it White for consistency */
     .rp-button-quiet {
         @apply border-ink-faint bg-surface text-ink-muted hover:bg-sand active:bg-sand-dark;
     }
 
-    /* Danger/Destructive Action: Clay Accent */
+    /* Danger */
     .rp-button-danger {
         @apply border-clay bg-surface text-clay hover:bg-red-50 active:bg-red-100;
     }
 
-    /* Success/Confirm Action: Sage Accent */
+    /* Success */
     .rp-button-success {
         @apply border-sage bg-surface text-ink hover:bg-sage-light active:bg-sage;
     }
@@ -94,42 +96,38 @@
         @apply w-full border-collapse text-sm;
     }
 
+    /* Table Headers: Use SAND to distinguish from White Rows */
     .rp-table th {
         @apply border-b border-ink-faint bg-sand px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-ink;
     }
 
+    /* Table Cells: WHITE background to stand out from Paper */
     .rp-table td {
-        @apply border-b border-ink-faint/30 px-4 py-3 align-middle text-ink-muted;
+        @apply border-b border-ink-faint/30 bg-surface px-4 py-3 align-middle text-ink-muted;
+    }
+    
+    /* Row Hover: Slight tint of sand */
+    .rp-table tbody tr:hover td {
+        @apply bg-sand/30;
     }
 
-    /* Row Hover State */
-    .rp-table tbody tr:hover {
-        @apply bg-sand/50;
-    }
-
-    /* --- BADGES & STATUS INDICATORS --- */
-
-    /* Default Neutral Badge */
+    /* --- BADGES --- */
     .rp-badge {
         @apply inline-flex items-center border px-2 py-0.5 text-xs font-medium rounded-none shadow-none;
     }
 
-    /* Success (In Stock / Completed) */
     .rp-badge-success {
         @apply border-sage bg-sage-light text-ink;
     }
 
-    /* Warning (Low Stock / Pending) */
     .rp-badge-warning {
         @apply border-gold bg-yellow-50 text-ink;
     }
 
-    /* Danger (Out of Stock / Failed) */
     .rp-badge-danger {
         @apply border-clay bg-red-50 text-clay;
     }
 
-    /* Info/Muted (Draft / Archived) */
     .rp-badge-info {
         @apply border-ink-faint bg-gray-50 text-ink-muted;
     }
