@@ -136,12 +136,27 @@
                                 <td><x-badge variant="quiet" x-text="product.category"></x-badge></td>
                                 <td x-text="formatCurrency(product.price)"></td>
                                 <td>
-                                    <x-badge
-                                        :variant="product.stock === 0 ? 'strong' : (product.stock < 10 ? 'default' : 'quiet')"
+                                    <!--
+                                      We use a standard <span> instead of <x-badge> here because
+                                      we need dynamic Alpine classes based on 'product.stock'.
+
+                                      Logic:
+                                      - stock === 0 -> Strong (Black border/text)
+                                      - stock < 10  -> Default (Gray border/text)
+                                      - else        -> Quiet (Light gray border/text)
+                                    -->
+                                    <span
+                                        class="inline-flex items-center border bg-white px-2 py-1 text-xs"
+                                        x-bind:class="
+                                            product.stock === 0
+                                                ? 'border-gray-900 text-gray-900 font-semibold'
+                                                : (product.stock < 10
+                                                    ? 'border-gray-500 text-gray-800'
+                                                    : 'border-gray-300 text-gray-600')
+                                        "
                                         x-text="stockLabel(product.stock)"
-                                    ></x-badge>
+                                    ></span>
                                 </td>
-                                <td x-text="product.added"></td>
                             </tr>
                         </template>
                     </tbody>
