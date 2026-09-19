@@ -63,7 +63,6 @@
                         >
                             List
                         </button>
-
                         <button
                             type="button"
                             @click="view = 'grid'"
