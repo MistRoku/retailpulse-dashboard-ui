@@ -38,46 +38,103 @@
 }
 
 @layer components {
+
+    /* --- PANELS & CONTAINERS --- */
     .rp-panel {
-        @apply border border-gray-300 bg-white;
+        @apply border border-ink-faint bg-surface;
     }
 
+    .rp-card {
+        @apply border border-ink-faint bg-surface p-5;
+    }
+
+    /* --- FORM ELEMENTS --- */
     .rp-field {
-        @apply w-full border border-gray-400 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500;
+        @apply w-full border border-ink-faint bg-surface px-3 py-2 text-sm text-ink placeholder-ink-faint focus:border-ink focus:outline-none rounded-none shadow-none;
     }
 
     .rp-label {
-        @apply mb-1 block text-sm font-medium text-gray-800;
+        @apply mb-1 block text-sm font-medium text-ink;
     }
 
+    /* --- BUTTONS --- */
+
+    /* Base Button Style */
     .rp-button {
-        @apply inline-flex cursor-pointer items-center justify-center border border-gray-500 bg-white px-4 py-2 text-sm font-medium text-gray-900;
+        @apply inline-flex cursor-pointer items-center justify-center border px-4 py-2 text-sm font-medium transition-none rounded-none shadow-none;
     }
 
+    /* Primary Action: High Contrast (Dark Ink Border/Text on White or Sand BG) */
     .rp-button-primary {
-        @apply border-gray-900 font-semibold;
+        @apply border-ink bg-surface text-ink hover:bg-sand active:bg-sand-dark;
     }
 
+    /* Secondary/Quiet Action: Lower Contrast */
     .rp-button-quiet {
-        @apply border-gray-300 text-gray-700;
+        @apply border-ink-faint bg-surface text-ink-muted hover:bg-sand active:bg-sand-dark;
     }
 
+    /* Danger/Destructive Action: Clay Accent */
+    .rp-button-danger {
+        @apply border-clay bg-surface text-clay hover:bg-red-50 active:bg-red-100;
+    }
+
+    /* Success/Confirm Action: Sage Accent */
+    .rp-button-success {
+        @apply border-sage bg-surface text-ink hover:bg-sage-light active:bg-sage;
+    }
+
+    /* --- LINKS --- */
     .rp-link {
-        @apply text-gray-900 underline decoration-gray-400 underline-offset-2;
+        @apply text-ink underline decoration-ink-faint underline-offset-2 hover:text-ink-muted hover:decoration-ink;
     }
 
+    /* --- TABLES --- */
     .rp-table {
         @apply w-full border-collapse text-sm;
     }
 
     .rp-table th {
-        @apply border-b border-gray-300 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-700;
+        @apply border-b border-ink-faint bg-sand px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-ink;
     }
 
     .rp-table td {
-        @apply border-b border-gray-200 px-4 py-3 align-middle text-gray-900;
+        @apply border-b border-ink-faint/30 px-4 py-3 align-middle text-ink-muted;
     }
 
+    /* Row Hover State */
+    .rp-table tbody tr:hover {
+        @apply bg-sand/50;
+    }
+
+    /* --- BADGES & STATUS INDICATORS --- */
+
+    /* Default Neutral Badge */
+    .rp-badge {
+        @apply inline-flex items-center border px-2 py-0.5 text-xs font-medium rounded-none shadow-none;
+    }
+
+    /* Success (In Stock / Completed) */
+    .rp-badge-success {
+        @apply border-sage bg-sage-light text-ink;
+    }
+
+    /* Warning (Low Stock / Pending) */
+    .rp-badge-warning {
+        @apply border-gold bg-yellow-50 text-ink;
+    }
+
+    /* Danger (Out of Stock / Failed) */
+    .rp-badge-danger {
+        @apply border-clay bg-red-50 text-clay;
+    }
+
+    /* Info/Muted (Draft / Archived) */
+    .rp-badge-info {
+        @apply border-ink-faint bg-gray-50 text-ink-muted;
+    }
+
+    /* --- SCROLLERS --- */
     .rp-scroll-row {
         @apply flex gap-4 overflow-x-auto pb-2;
     }

@@ -1,6 +1,10 @@
 @props([
-    'variant' => 'quiet',
+    'variant' => 'info', // info, success, warning, danger
 ])
+
+<span {{ $attributes->merge(['class' => 'rp-badge rp-badge-' . $variant]) }}>
+    {{ $slot }}
+</span>
 
 @php
     $variants = [
