@@ -1,58 +1,124 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# RetailPulse Dashboard UI
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A production-grade, responsive admin dashboard for a fictional multi-branch retail chain. Built using **Laravel Blade**, **Tailwind CSS**, and **Alpine.js** to demonstrate high-performance frontend architecture without heavy JavaScript frameworks.
 
-## About Laravel
+![RetailPulse Screenshot](./screenshots/dashboard.png)
+*(Note: Replace with actual screenshot path)*
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Tech Stack
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+*   **Framework:** Laravel 11
+*   **Styling:** Tailwind CSS 3.4
+*   **Interactivity:** Alpine.js 3
+*   **Build Tool:** Vite
+*   **Charts:** Chart.js 4
+*   **Icons:** Lucide Icons
+*   **Font:** Public Sans (@fontsource)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🎨 Design Philosophy
 
-## Learning Laravel
+This project adheres to a strict **"Radical Minimalism"** design system:
+*   **No Shadows:** Depth is created via borders and color contrast.
+*   **No Gradients:** Flat, solid colors only.
+*   **Square Corners:** `border-radius: 0` enforced globally.
+*   **Pure White Cards:** On a warm off-white (`#FDFBF7`) background.
+*   **Organic Palette:** Sage Green, Warm Sand, Pale Gold, and Clay accents.
+*   **Accessibility First:** WCAG AA compliant, visible focus states, semantic HTML.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ⚡ Features
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1.  **Dynamic Dashboard:** Real-time KPIs, Chart.js visualizations, and recent activity feeds.
+2.  **Product Catalog:** Client-side filtering, sorting, pagination, and List/Grid view toggles.
+3.  **Staff Management:** CRUD modals, role-based badges, and active status toggles.
+4.  **POS Terminal:** Reactive cart calculations, tax/discount logic, held orders, and printable receipts.
+5.  **Advanced Reports:** Date-range analysis, period comparisons, and CSV exports.
+6.  **Settings Hub:** Branch configuration, notification preferences, and profile management.
+7.  **Legal Compliance:** Dedicated Terms of Service and Privacy Policy pages.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Installation & Setup
 
-## Agentic Development
+### Prerequisites
+*   PHP >= 8.2
+*   Composer
+*   Node.js >= 20
+*   npm
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Steps
 
-```bash
-composer require laravel/boost --dev
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/retailpulse-dashboard-ui.git
+    cd retailpulse-dashboard-ui
+    ```
 
-php artisan boost:install
-```
+2.  **Install PHP dependencies:**
+    ```bash
+    composer install
+    ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+3.  **Set up environment:**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-## Contributing
+4.  **Install JavaScript dependencies:**
+    ```bash
+    npm install
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5.  **Run Development Servers:**
+    Open two terminals.
+    
+    Terminal 1 (Backend):
+    ```bash
+    php artisan serve
+    ```
+    
+    Terminal 2 (Frontend Assets):
+    ```bash
+    npm run dev
+    ```
 
-## Code of Conduct
+6.  **Visit the App:**
+    Navigate to `http://localhost:8000` in your browser.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📂 Project Structure
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+resources/
+├── css/
+│   └── app.css          # Global styles, Tailwind layers, component classes
+├── js/
+│   ├── app.js           # Entry point, Alpine registration, Chart.js setup
+│   └── components/      # Modular Alpine logic (shell, dashboard, pos, etc.)
+└── views/
+    ├── layouts/         # Master Blade layout
+    ├── components/      # Reusable Blade UI parts (buttons, modals, badges)
+    ├── dashboard/       # Home screen views
+    ├── products/        # Inventory management views
+    ├── staff/           # Team management views
+    ├── pos/             # Point of Sale terminal views
+    ├── reports/         # Analytics views
+    ├── settings/        # Configuration views
+    └── legal/           # ToS and Privacy Policy
+app/
+└── Support/
+    └── RetailPulseData.php # Mock data provider (Repository Pattern Simulation)
 
-## License
+    
+## ♿ Accessibility
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+*   All interactive elements have visible focus outlines (`outline: 2px solid #2C3E30`).
+*   Icon-only buttons include `aria-label` attributes.
+*   Tables use proper `<th scope="col">` semantics.
+*   Color contrast ratios meet WCAG AA standards.
+*   Skeleton loaders are marked `aria-hidden="true"` to prevent screen reader noise.
+
+## 📄 License
+
+This project is for educational and portfolio purposes. 
+Licensed under MIT.
+
+---
+*RetailPulse is a fictional brand. All data is synthetic.*
