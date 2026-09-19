@@ -7,6 +7,9 @@ export function productCatalog(items) {
         view: 'list',
         page: 1,
         perPage: 8,
+
+        // PREPROCESSING DATA
+        // Generate initials for avatars/placeholders upfront to avoid recalculating on ever
         items: items.map((item) => ({
             ...item,
             initials: item.name
@@ -22,6 +25,7 @@ export function productCatalog(items) {
                 this.loading = false;
             }, 300);
 
+             // WATCHERS: Reset pagination when filters change to prevent empty pages
             this.$watch('query', () => {
                 this.page = 1;
             });

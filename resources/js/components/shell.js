@@ -1,10 +1,18 @@
 export function shell() {
     return {
+         // STATE: Navigation
         mobileNavOpen: false,
+
+        // STATE: Persisted Preferences
+        // Initialized from LocalStorage to restore user session context immediately.
         sidebarCollapsed: window.rpStorage.read('retailpulse.sidebar.collapsed', false),
         contrastHigh: window.rpStorage.read('retailpulse.contrast.high', false),
+
+        // STATE: Dropdown Menus
         notificationsOpen: false,
         userMenuOpen: false,
+
+        // STATE: Search
         globalSearchOpen: false,
         searchQuery: '',
         searchResults: [],
@@ -12,6 +20,7 @@ export function shell() {
         unreadCount: 3,
 
         init() {
+            // Apply persisted contrast setting on load to prevent FOUC (Flash of Unsty
             this.applyContrast();
         },
 
@@ -25,6 +34,7 @@ export function shell() {
 
         toggleSidebar() {
             this.sidebarCollapsed = !this.sidebarCollapsed;
+            // Persist state immediately so it survives page reloads/navigation
             window.rpStorage.write('retailpulse.sidebar.collapsed', this.sidebarCollapsed);
         },
 
@@ -53,10 +63,13 @@ export function shell() {
         },
 
         runSearch() {
+            // DEBOUNCE STRATEGY
+            // In a real app, this would hit an API. Here, we simulate latency to show Skele
             this.searching = true;
 
             window.setTimeout(() => {
                 this.searching = false;
+                // MOCK FILTERING LOGIC
                 this.searchResults = [
                     { label: 'Classic Cotton Tee', type: 'Product', url: '/products' },
                     { label: 'Priya Nair', type: 'Staff', url: '/staff' },

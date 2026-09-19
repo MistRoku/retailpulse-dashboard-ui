@@ -7,14 +7,21 @@ export function dashboardHome() {
         topProductsChart: null,
 
         init() {
+            // SIMULATE ASYNC LOADING
+                        // Staggered timeouts mimic network requests to demonstrate Skeleton Loader UX.
+
+                        // 1. Hide KPI/Table skeletons after short delay
+
             window.setTimeout(() => {
                 this.loading = false;
                 this.tableLoading = false;
             }, 350);
 
+            // 2. Hide Chart skeletons and initialize Chart.js instances
             window.setTimeout(() => {
                 this.chartLoading = false;
 
+                // $nextTick ensures the DOM has updated (canvas elements are visible)
                 this.$nextTick(() => {
                     this.renderRevenueChart();
                     this.renderTopProductsChart();
@@ -29,6 +36,7 @@ export function dashboardHome() {
                 return;
             }
 
+            // CLEANUP: Destroy existing instance to prevent memory leaks/canvas duplication
             if (this.revenueChart) {
                 this.revenueChart.destroy();
             }

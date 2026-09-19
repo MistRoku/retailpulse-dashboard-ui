@@ -43,6 +43,7 @@ export function posTerminal(products, taxRate, heldOrders) {
         },
 
         addToCart(product) {
+            // UPSERT LOGIC: Check if item exists, increment qty, else push new
             const existing = this.cart.find((line) => line.id === product.id);
 
             if (existing) {
@@ -74,6 +75,8 @@ export function posTerminal(products, taxRate, heldOrders) {
             this.cart = this.cart.filter((item) => item.id !== line.id);
         },
 
+        // REACTIVE GETTERS
+        // These automatically recalculate whenever `cart`, `discount`, or `taxRate` chan
         get subtotal() {
             return this.round(this.cart.reduce((sum, line) => sum + line.price * line.qty, 0));
         },
@@ -106,6 +109,7 @@ export function posTerminal(products, taxRate, heldOrders) {
                 return;
             }
 
+            // SNAPSHOT CART STATE
             const order = {
                 id: 'HOLD-' + Math.floor(1000 + Math.random() * 9000),
                 customer: 'Walk-in',
@@ -119,6 +123,7 @@ export function posTerminal(products, taxRate, heldOrders) {
             this.heldOrders.unshift(order);
             window.rpStorage.write('retailpulse.pos.heldOrders', this.heldOrders);
 
+            // RESET CURRENT SESSION
             this.cart = [];
             this.discount = 0;
             this.tab = 'held';
@@ -158,7 +163,7 @@ export function posTerminal(products, taxRate, heldOrders) {
 
         printReceipt() {
             window.print();
-        },
+        }, // Triggers browser native print dialog
 
         newSale() {
             this.cart = [];
