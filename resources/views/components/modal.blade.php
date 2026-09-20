@@ -8,6 +8,8 @@
     x-show="{{ $name }}"
     x-cloak
     class="fixed inset-0 z-50 bg-white"
+    x-trap.noscroll="{{ $name }}"
+    x-init="$watch('{{ $name }}', v => { if (v) $nextTick(() => $el.querySelector('[autofocus]')?.focus()) })"
     role="dialog"
     aria-modal="true"
     @if($title) aria-label="{{ $title }}" @endif

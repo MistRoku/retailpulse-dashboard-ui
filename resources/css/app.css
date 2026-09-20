@@ -10,13 +10,11 @@
 @layer base {
     html {
         font-family: theme('fontFamily.sans');
-        /* NEW CONSTRAINT: Warm Editorial Background */
         background-color: #FDFBF7;
-        color: #2C3E30; /* Ink color remains consistent */
+        color: #2C3E30;
     }
 
     body {
-        /* Ensure the body fills the screen with the new bg */
         background-color: #FDFBF7;
         min-height: 100vh;
         -webkit-font-smoothing: antialiased;
@@ -28,111 +26,64 @@
     }
 
     *:focus-visible {
-        outline: 2px solid #2C3E30;
+        outline: 3px solid #2C3E30;
         outline-offset: 2px;
-        box-shadow: none;
     }
 
     ::selection {
         background-color: #2C3E30;
-        color: #FDFBF7; /* Text selection inverted for readability on dark ink */
+        color: #FDFBF7;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+        }
     }
 }
 
 @layer components {
-    
-    /* --- PANELS & CONTAINERS --- */
-    /* These should be WHITE to pop against the PAPER background */
-    .rp-panel {
-        @apply border border-ink-faint bg-surface; /* Explicitly White */
-    }
-
     .rp-card {
-        @apply border border-ink-faint bg-surface p-5; /* Explicitly White */
+        @apply border border-ink-faint bg-surface p-5;
     }
 
-    /* --- FORM ELEMENTS --- */
     .rp-field {
-        /* Inputs should be WHITE for clarity, even on paper bg */
-        @apply w-full border border-ink-faint bg-surface px-3 py-2 text-sm text-ink placeholder-ink-faint focus:border-ink focus:outline-none rounded-none shadow-none;
+        @apply w-full border border-ink-faint bg-surface px-3 py-2 text-sm text-ink placeholder-[#4A5D50] rounded-none shadow-none;
+    }
+
+    .rp-field:focus-visible {
+        @apply outline outline-2 outline-offset-2 outline-ink;
     }
 
     .rp-label {
         @apply mb-1 block text-sm font-medium text-ink;
     }
 
-    /* --- BUTTONS --- */
     .rp-button {
         @apply inline-flex cursor-pointer items-center justify-center border px-4 py-2 text-sm font-medium transition-none rounded-none shadow-none;
     }
 
-    /* Primary: White button on Paper bg looks clean */
+    .rp-button:focus-visible {
+        @apply outline outline-3 outline-offset-2 outline-ink;
+    }
+
     .rp-button-primary {
         @apply border-ink bg-surface text-ink hover:bg-sand active:bg-sand-dark;
     }
 
-    /* Quiet: Transparent-ish or Light Sand? Let's keep it White for consistency */
     .rp-button-quiet {
         @apply border-ink-faint bg-surface text-ink-muted hover:bg-sand active:bg-sand-dark;
     }
 
-    /* Danger */
-    .rp-button-danger {
-        @apply border-clay bg-surface text-clay hover:bg-red-50 active:bg-red-100;
-    }
-
-    /* Success */
-    .rp-button-success {
-        @apply border-sage bg-surface text-ink hover:bg-sage-light active:bg-sage;
-    }
-
-    /* --- LINKS --- */
-    .rp-link {
-        @apply text-ink underline decoration-ink-faint underline-offset-2 hover:text-ink-muted hover:decoration-ink;
-    }
-
-    /* --- TABLES --- */
-    .rp-table {
-        @apply w-full border-collapse text-sm;
-    }
-
-    /* Table Headers: Use SAND to distinguish from White Rows */
-    .rp-table th {
-        @apply border-b border-ink-faint bg-sand px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-ink;
-    }
-
-    /* Table Cells: WHITE background to stand out from Paper */
-    .rp-table td {
-        @apply border-b border-ink-faint/30 bg-surface px-4 py-3 align-middle text-ink-muted;
-    }
-    
-    /* Row Hover: Slight tint of sand */
-    .rp-table tbody tr:hover td {
-        @apply bg-sand/30;
-    }
-
-    /* --- BADGES --- */
     .rp-badge {
         @apply inline-flex items-center border px-2 py-0.5 text-xs font-medium rounded-none shadow-none;
     }
 
-    .rp-badge-success {
-        @apply border-sage bg-sage-light text-ink;
+    .rp-link {
+        @apply text-ink underline decoration-ink-faint underline-offset-2 hover:text-ink-muted hover:decoration-ink;
     }
 
-    .rp-badge-warning {
-        @apply border-gold bg-yellow-50 text-ink;
-    }
-
-    .rp-badge-danger {
-        @apply border-clay bg-red-50 text-clay;
-    }
-
-    .rp-badge-info {
-        @apply border-ink-faint bg-gray-50 text-ink-muted;
-    }
-
-    /* --- SCROLLERS --- */
     .rp-scroll-row {
         @apply flex gap-4 overflow-x-auto pb-2;
     }
@@ -142,15 +93,12 @@
     }
 }
 
-[data-contrast="high"] .text-gray-500,
-[data-contrast="high"] .text-gray-600,
-[data-contrast="high"] .text-gray-700 {
+[data-contrast="high"] .text-ink-muted,
+[data-contrast="high"] .text-ink-faint {
     color: #111111;
 }
 
-[data-contrast="high"] .border-gray-200,
-[data-contrast="high"] .border-gray-300,
-[data-contrast="high"] .border-gray-400 {
+[data-contrast="high"] .border-ink-faint {
     border-color: #111111;
 }
 

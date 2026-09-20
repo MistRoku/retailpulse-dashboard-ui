@@ -2,6 +2,8 @@
     x-show="mobileNavOpen"
     x-cloak
     class="fixed inset-0 z-50 bg-white lg:hidden"
+    x-trap.noscroll="mobileNavOpen"
+    @keydown.escape.window="closeMobileNav"
     role="dialog"
     aria-modal="true"
     aria-label="Mobile navigation"

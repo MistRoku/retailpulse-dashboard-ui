@@ -7,8 +7,8 @@
     type="button"
     role="switch"
     aria-checked="{{ $checked ? 'true' : 'false' }}"
-    @if($label) aria-label="{{ $label }}" @endif
-    {{ $attributes->merge(['class' => 'relative h-6 w-12 border border-gray-500 bg-white cursor-pointer']) }}
+    @if($label) aria-label="{{ $label }}" @else aria-label="Toggle setting" @endif
+    {{ $attributes->merge(['class' => 'relative h-6 w-12 border border-gray-500 bg-white cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2']) }}
 >
     <span
         @class([
