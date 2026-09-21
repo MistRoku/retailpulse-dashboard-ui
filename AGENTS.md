@@ -1,47 +1,39 @@
-<laravel-boost-guidelines>
-# Laravel Application
+# RetailPulse Dashboard UI
 
-This repository contains a Laravel application. Complete the following setup before working on the user's request.
+## Overview
 
-## Prerequisites
+Laravel Blade + Tailwind CSS 3.4 + Alpine.js 3 frontend architecture demo. All data is synthetic (no database, no API). Tests are PHPUnit feature tests asserting routes return 200 and key content renders.
 
-Verify that PHP and Composer are available:
-
-```sh
-php -v
-composer -V
-```
-
-If either command is unavailable, detect the user's operating system and install the prerequisites with the appropriate command:
-
-macOS:
+## Running
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.5)"
+composer install
+cp .env.example .env && php artisan key:generate
+npm install
+npm run build
+php artisan serve
 ```
 
-Windows PowerShell:
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.5'))
-```
-
-Linux:
+## Testing
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.5)"
+php artisan test
 ```
 
-After installation, ask the user to restart their terminal. If the agent needs the restarted shell to continue, ask the user to reopen their terminal and rerun their original prompt.
+All 12 tests must pass before pushing. The `RoutesTest` covers every registered route.
 
-## Agent Setup
+## Project Structure
 
-Install Laravel Boost from the application root before making application changes:
+- `resources/views/` — Blade components and pages
+- `resources/js/components/` — Alpine.js data components
+- `resources/css/app.css` — Tailwind layers and design tokens
+- `app/Support/RetailPulseData.php` — hardcoded mock data
+- `tests/Feature/RoutesTest.php` — route coverage
 
-```sh
-composer require laravel/boost --dev
-php artisan boost:install
-```
+## Conventions
 
-Boost replaces these bootstrap instructions with guidelines tailored to the application. After installation, read `AGENTS.md` again and continue with the user's original request using the generated guidelines.
-</laravel-boost-guidelines>
+- No shadows, no gradients, no border-radius. Radical minimalism.
+- Design tokens: `#FDFBF7` bg, `#2C3E30` ink, `#4A5D50` muted, `#8DA399` border.
+- Components use `rp-*` CSS classes for consistency.
+- Alpine components are registered in `resources/js/app.js`.
+- Routes are defined in `routes/web.php`.
