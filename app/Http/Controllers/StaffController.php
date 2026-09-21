@@ -10,12 +10,12 @@ class StaffController extends Controller
 {
     public function index()
         {
-            return view('products.index', [
-                'products' => RetailPulseData::products(),
-                'categories' => RetailPulseData::categories(),
+            return view('staff.index', [
+                'staff' => RetailPulseData::staff(),
+                'branches' => RetailPulseData::branches(),
                 'breadcrumbs' => [
                     ['label' => 'Dashboard', 'url' => route('dashboard')],
-                    ['label' => 'Products', 'url' => route('products.index')],
+                    ['label' => 'Staff', 'url' => route('staff.index')],
                 ],
             ]);
         }

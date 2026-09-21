@@ -78,10 +78,15 @@
                             </td>
 
                             <td>
-                                <x-badge
-                                    :variant="member.role === 'Admin' ? 'strong' : (member.role === 'Manager' ? 'default' : 'quiet')"
+                                <span
                                     x-text="member.role"
-                                ></x-badge>
+                                    x-bind:class="{
+                                        'border-gray-900 text-gray-900 font-semibold': member.role === 'Admin',
+                                        'border-gray-500 text-gray-800': member.role === 'Manager',
+                                        'border-gray-300 text-gray-600': member.role !== 'Admin' && member.role !== 'Manager',
+                                    }"
+                                    class="inline-flex items-center border bg-white px-2 py-1 text-xs"
+                                ></span>
                             </td>
 
                             <td x-text="member.branch"></td>

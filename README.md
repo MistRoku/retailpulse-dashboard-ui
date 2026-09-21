@@ -1,9 +1,8 @@
 # RetailPulse Dashboard UI
 
-A production-grade, responsive admin dashboard for a fictional multi-branch retail chain. Built using **Laravel Blade**, **Tailwind CSS**, and **Alpine.js** to demonstrate high-performance frontend architecture without heavy JavaScript frameworks.
+> **Frontend architecture demo.** This is a fictional admin dashboard built to showcase Laravel Blade, Tailwind CSS, and Alpine.js patterns. All data is synthetic and hardcoded via `RetailPulseData` — there is no database, no API, and no authentication layer. Not intended for production use.
 
-![RetailPulse Screenshot](./screenshots/dashboard.png)
-*(Note: Replace with actual screenshot path)*
+![RetailPulse Dashboard](./screenshots/dashboard.png)
 
 ## 🚀 Tech Stack
 
@@ -47,7 +46,7 @@ This project adheres to a strict **"Radical Minimalism"** design system:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/retailpulse-dashboard-ui.git
+    git clone https://github.com/MistRoku/retailpulse-dashboard-ui.git
     cd retailpulse-dashboard-ui
     ```
 
@@ -121,4 +120,4 @@ This project is for educational and portfolio purposes.
 Licensed under MIT.
 
 ---
-*RetailPulse is a fictional brand. All data is synthetic.*
+*RetailPulse is a fictional brand. All data is synthetic. This project demonstrates frontend architecture patterns only — it is not a functioning application.*

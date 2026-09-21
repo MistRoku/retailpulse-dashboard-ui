@@ -19,7 +19,6 @@
         </a>
 
         @include('components.sidebar')
-        @include('components.mobile-nav-overlay')
 
         <div class="flex min-h-screen flex-col lg:flex-row">
             <div class="hidden lg:block">
