@@ -65,7 +65,8 @@
     }
 
     .rp-button:focus-visible {
-        @apply outline outline-3 outline-offset-2 outline-ink;
+        @apply outline outline-offset-2 outline-ink;
+        outline-width: 3px;
     }
 
     .rp-button-primary {
